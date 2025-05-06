@@ -7,8 +7,8 @@ This project builds a simple chatbot using `GPT-Neo 125M`, exposes response time
 ### 1. Clone & Build Docker
 
 ```bash
-git clone https://github.com/your-repo/chatbot-llm-monitoring.git
-cd chatbot-llm-monitoring
+git clone https://github.com/tranduyen29081998/AI-LLM-AIOps.git
+cd AI-LLM-AIOps
 docker-compose up --build
 ```
 
