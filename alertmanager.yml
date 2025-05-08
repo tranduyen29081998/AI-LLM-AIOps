@@ -8,7 +8,7 @@ route:
 receivers:
   - name: 'slack'
     slack_configs:
-      - api_url: 'https://hooks.slack.com/services/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' # Đặt webhook URL ở đây
+      - api_url: ${SLACK_WEBHOOK_URL} # Đặt webhook URL ở đây
         channel: '#alerts'  # Đặt tên kênh Slack bạn muốn nhận alert
         title: "{{ .CommonLabels.alertname }}"
         text: "{{ .CommonAnnotations.summary }}\nResponse time: {{ .CommonAnnotations.response_time }}"
