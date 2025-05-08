@@ -1,0 +1,11 @@
+groups:
+  - name: chatbot-alerts
+    rules:
+      - alert: HighResponseTime
+        expr: response_time_seconds > 2
+        for: 10s  # Triggers faster
+        labels:
+          severity: critical
+        annotations:
+          summary: "High response time detected for chatbot"
+          response_time: "{{ $value }}s"

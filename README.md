@@ -19,6 +19,14 @@ docker-compose up --build
 - `http://localhost:9090`: Prometheus UI
 - `http://localhost:3000`: Grafana (admin / admin)
 
+| Port     | Dịch vụ                                | Vai trò chính                                                                   |
+| -------- | -------------------------------------- | ------------------------------------------------------------------------------- |
+| **5000** | Flask Chatbot API                      | Cung cấp endpoint `/chat` (dạng POST) để nhận câu hỏi từ người dùng và trả lời. |
+| **8000** | Prometheus Metrics Exporter (từ Flask) | Expose endpoint `/metrics` để hiển thị dữ liệu metric cho Prometheus.           |
+| **9090** | Prometheus UI                          | Giao diện web để truy vấn, giám sát metric từ ứng dụng (qua port 8000).         |
+| **3000** | Grafana                                | Giao diện trực quan hóa dữ liệu Prometheus, vẽ biểu đồ, dashboard giám sát.     |
+
+
 ## 🔧 Flask + Metrics
 
 Metrics are exposed via Prometheus client on port `8000`:

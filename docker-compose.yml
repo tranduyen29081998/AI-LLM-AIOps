@@ -16,6 +16,7 @@ services:
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - ./alert_rules.yml:/etc/prometheus/alert_rules.yml
+      - ./alertmanager.yml:/etc/prometheus/alertmanager.yml # Mount file alertmanager.yml vào container
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
     ports:
@@ -31,10 +32,22 @@ services:
     networks:
       - monitor-net
     volumes:
-      - grafana-storage:/var/lib/grafana
+      - grafana-storage:/var/lib/grafana # Volume để giữ dữ liệu của Grafana
+
+  alertmanager:
+    image: prom/alertmanager
+    container_name: alertmanager
+    ports:
+      - "9093:9093"
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    command:
+      - "--config.file=/etc/alertmanager/alertmanager.yml"
+    networks:
+      - monitor-net
 
 volumes:
-  grafana-storage:
+  grafana-storage: # Định nghĩa volume Grafana để lưu trữ dữ liệu lâu dài
 
 networks:
   monitor-net:
